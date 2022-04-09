@@ -11,19 +11,9 @@ iframePlayer.on('timeupdate', throttle(data => {
     console.log('timeupdate', data.seconds);
 }, 1000));
 
+const savedTime = localStorage.getItem("videoplayer-current-time")
 
-
-iframePlayer.setCurrentTime(localStorage.getItem("videoplayer-current-time")).then(function(seconds) {
-    // seconds = the actual time that the player seeked to
-}).catch(function(error) {
-    switch (error.name) {
-        case 'RangeError':
-            // the time was less than 0 or greater than the video’s duration
-            break;
-
-        default:
-            // some other error occurred
-            break;
-    }
-});
+if (savedTime){
+    iframePlayer.setCurrentTime(localStorage.getItem("videoplayer-current-time"))
+}
 

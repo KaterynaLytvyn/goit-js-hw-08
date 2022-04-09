@@ -22,10 +22,16 @@ function onFormInput(evt) {
 
 function onFormSubmit(evt) {
 
+    if (!email.value || !message.value){
+        alert('check that all fields are filled');
+        return;
+    }
+
     console.log('localStorage:', JSON.parse(localStorage.getItem("feedback-form-state")));
     evt.preventDefault();
     evt.currentTarget.reset();
     localStorage.clear();
+
 }
 
 function updateOutput() {
